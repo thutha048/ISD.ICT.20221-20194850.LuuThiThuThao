@@ -8,6 +8,6 @@ Basic flow of the event:
 
 
 Alternative flow of the event:
-3.1. If there is no support either from any media or address, Software notifies the customer
-    3.1.1. Customer updates delivery information, goes to step 1
-6.1. If the input is invalid, return to step 4
+3.1. If there is no support either from any media or address, Software notifies the customer, go to step 3.1.1.
+    3.1.1. Customer updates delivery information, resume at step 1.
+6.1. If the input is invalid, return to step 4.
