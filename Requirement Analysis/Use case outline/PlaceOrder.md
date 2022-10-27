@@ -18,5 +18,3 @@ Return to step 2
 4.1. If customer chooses to place a rush order, insert use case "Place rush order", then go to step 7
 5.1. If a mandatory field is left blank or there exists invalid input, return to step 4
 6.1. If customer has chosen to place a rush order, software changes the formula to calculate the shipping fees, the resume at step 7.
-
-
