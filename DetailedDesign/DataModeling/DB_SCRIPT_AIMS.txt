@@ -1,0 +1,133 @@
+
+CREATE TABLE Media (
+    id       INTEGER      PRIMARY KEY
+                          NOT NULL,
+    category VARCHAR (45),
+    title    VARCHAR (45),
+    price    INTEGER,
+    value    INTEGER,
+    quantity INTEGER,
+    imageUrl VARCHAR (45) 
+);
+
+
+CREATE TABLE Book (
+    id          INTEGER      PRIMARY KEY
+                             CONSTRAINT fk_Book_Media REFERENCES Media (id) 
+                             NOT NULL,
+    author      VARCHAR (45),
+    coverType   VARCHAR (45),
+    publisher   VARCHAR (45),
+    publishDate DATE,
+    numOfPage   INTEGER,
+    language    VARCHAR (45),
+    bookType    VARCHAR (45) 
+);
+
+CREATE TABLE CD (
+    id           INTEGER      CONSTRAINT fk_CD_Media REFERENCES Media (id) 
+                              PRIMARY KEY,
+    artist       VARCHAR (45),
+    recordLabel  VARCHAR (45),
+    musicType    VARCHAR (45),
+    releasedDate DATE
+);
+
+CREATE TABLE DVD (
+    id           INTEGER      PRIMARY KEY
+                              CONSTRAINT fk_DVD_Media REFERENCES Media (id) 
+                              NOT NULL,
+    discFormat   VARCHAR (25),
+    director     VARCHAR (45),
+    runtime      INTEGER,
+    studio       VARCHAR (45),
+    subtitle     VARCHAR (45),
+    releasedDate DATE,
+    discType     VARCHAR (25) 
+);
+
+CREATE TABLE RushOrder (
+    id           INTEGER       PRIMARY KEY
+                               NOT NULL,
+    timeInterval VARCHAR (45),
+    note         VARCHAR (200) 
+);
+
+
+CREATE TABLE DeliveryInfo (
+    id           INTEGER       PRIMARY KEY
+                               NOT NULL,
+    name         VARCHAR (45),
+    province     VARCHAR (45),
+    instructions VARCHAR (200),
+    address      VARCHAR (100),
+    rushOrder    INTEGER (1),
+    rushOrderId  INTEGER       REFERENCES RushOrder (id) 
+);
+
+CREATE TABLE [Order] (
+    id           INTEGER      PRIMARY KEY
+                              NOT NULL,
+    deliveryId   INTEGER      CONSTRAINT fk_Order_DeliveryInfo REFERENCES DeliveryInfo (id),
+    shippingFees VARCHAR (45) 
+);
+
+CREATE INDEX fk_Order_DeliveryId_idx ON [Order] (
+    deliveryId
+);
+
+CREATE TABLE OrderMedia (
+    orderId  INTEGER CONSTRAINT fk_OrderMedia_Order REFERENCES Order (id),
+    price    INTEGER,
+    quantity INTEGER,
+    mediaId  INTEGER CONSTRAINT fk_OrderMedia_Media REFERENCES Media (id) 
+);
+
+CREATE INDEX fk_ordermedia_mediaId_idx ON OrderMedia (
+    mediaId
+);
+
+CREATE INDEX fk_ordermedia_orderId_idx ON OrderMedia (
+    orderId
+);
+
+CREATE TABLE Invoice (
+    id      INTEGER PRIMARY KEY
+                        NOT NULL,
+    orderId     INTEGER CONSTRAINT fk_Invoice_Order REFERENCES [Order] (id),
+    subtotal    INTEGER,
+    subtotalVAT INTEGER,
+    totalAmount INTEGER
+);
+
+CREATE INDEX fk_invoice_orderId ON Invoice (
+    orderId
+);
+
+CREATE TABLE Card (
+    id          INTEGER      PRIMARY KEY
+                             NOT NULL,
+    cardCode    VARCHAR (20),
+    owner       VARCHAR (45),
+    issuingBank VARCHAR (45),
+    cvvCode     VARCHAR (3),
+    dateExpired VARCHAR (4) 
+);
+
+CREATE TABLE PaymentTransaction (
+    id        INTEGER      PRIMARY KEY
+                           NOT NULL,
+    content   VARCHAR (45),
+    method    VARCHAR (45),
+    createdAt DATETIME,
+    cardId    INTEGER      CONSTRAINT fk_PaymentTransaction_Card REFERENCES Card (id),
+    invoiceId INTEGER      CONSTRAINT fk_PaymentTransaction_Invoice REFERENCES Invoice ([id ]) 
+);
+
+CREATE INDEX fk_paymentTransaction_cardId_idx ON PaymentTransaction (
+    cardId
+);
+
+CREATE INDEX fk_paymentTransaction_invoiceId_idx ON PaymentTransaction (
+    invoiceId
+);
