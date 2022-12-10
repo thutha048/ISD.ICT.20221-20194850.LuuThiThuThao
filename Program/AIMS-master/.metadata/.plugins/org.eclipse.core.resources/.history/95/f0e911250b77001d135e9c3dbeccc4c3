@@ -1,0 +1,7 @@
+package common.exception;
+
+public class InvalidInputRushOrderException extends RushOrderException{
+	public InvalidInputRushOrderException() {
+		super("Error: The input is invalid!");
+	}
+}

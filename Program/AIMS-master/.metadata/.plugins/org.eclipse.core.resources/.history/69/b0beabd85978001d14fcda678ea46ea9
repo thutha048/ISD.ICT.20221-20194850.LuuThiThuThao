@@ -1,0 +1,5 @@
+package entity.rushOrder;
+
+public class RushOrder {
+
+}
