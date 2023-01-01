@@ -1,0 +1,24 @@
+package entity.rushOrder;
+import java.util.Calendar;
+import java.util.HashMap;
+import entity.media.*;
+import common.exception.PlaceRushOrderException;
+
+public class RushOrder {
+	private String note;
+	private String expectedTime;
+	
+	public RushOrder(String expectedTime, String note) {
+		super();
+		this.expectedTime= expectedTime;
+		this.note = note;
+	}
+	
+	public boolean isRushed() {
+		return true;
+	}
+	
+	public RushOrder(HashMap<Media,Integer> listItem) {
+		super(listItem);
+	}
+}

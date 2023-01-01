@@ -3,14 +3,25 @@ package controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Iterator;
 
+import common.exception.PlaceOrderException;
+
+import java.util.Iterator;
+
+import entity.order.*;
 import entity.media.Media;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
 import entity.rushOrder.*;
 
-public class PlaceRushOrderController extends BaseController{
+
+public class PlaceRushOrderController extends PlaceOrderController{
 	
+	private static PlaceRushOrderController PlaceRushOrderController;
+	
+
 	public void processRushOrderInfo() {
 		
 	}

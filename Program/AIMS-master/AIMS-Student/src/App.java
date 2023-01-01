@@ -12,6 +12,10 @@ import javafx.util.Duration;
 import utils.Configs;
 import views.screen.home.*;
 
+/**
+ * @author A
+ *
+ */
 public class App extends Application {
 
 	@FXML

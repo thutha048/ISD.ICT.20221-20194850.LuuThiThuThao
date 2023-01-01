@@ -28,6 +28,8 @@ public class Media {
     protected String type;
     protected String imageURL;
 
+	private boolean supportRush;
+
     public Media() throws SQLException{
         stm = AIMSDB.getConnection().createStatement();
     }
@@ -94,7 +96,11 @@ public class Media {
                           + field + "=" + value + " " 
                           + "where id=" + id + ";");
     }
-
+    
+    public boolean isRushSupported() {
+		return this.supportRush;
+	}
+    
     // getter and setter 
     public int getId() {
         return this.id;

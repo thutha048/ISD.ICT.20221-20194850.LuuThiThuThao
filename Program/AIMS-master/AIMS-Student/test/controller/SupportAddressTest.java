@@ -25,7 +25,7 @@ class SupportAddressTest {
 		"hai phong, false",
 		"hanoi,false"
 	})
-	//c2: don't use @test
+
 	void test(String address, boolean expected) {	
 		//when
 		boolean isValid = placeRushOrderController.checkSupportAddress(address);

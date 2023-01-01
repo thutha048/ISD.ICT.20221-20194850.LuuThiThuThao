@@ -1,21 +1,4 @@
 INDEX VERSION 1.131+D:\DELL\20221\ITSS Software\Program\.metadata\.plugins\org.eclipse.jdt.core
 1865797976.index
-1016143304.index
-1987954038.index
-4279531.index
-2561752492.index
-2326972089.index
-3473229893.index
-1994056072.index
-3289786883.index
-3597773166.index
 1033755400.index
-1143191303.index
-666939921.index
-3161451382.index
-608405618.index
 3401917468.index
-3912972556.index
-1277662096.index
-2724035970.index
-2583669261.index

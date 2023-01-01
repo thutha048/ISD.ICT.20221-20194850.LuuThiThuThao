@@ -1,0 +1,5 @@
+1672071920239	Rename type 'API'
+1672072529654	Extract method 'extracted'
+1672072644464	Rename method 'extracted'
+1672072736732	Inline local variable 'line_api_url'
+1672072862373	Move method
