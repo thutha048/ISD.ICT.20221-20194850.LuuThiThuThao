@@ -19,9 +19,9 @@ public class DVD extends Media {
 
     }
 
-    public DVD(int id, String title, String category, int price, int quantity, String type, String discType,
+    public DVD(int id, String title, String category, int price, int quantity, String type,boolean supportRush, String discType,
             String director, int runtime, String studio, String subtitles, Date releasedDate, String filmType) throws SQLException{
-        super(id, title, category, price, quantity, type);
+        super(id, title, category, price, quantity, type,supportRush);
         this.discType = discType;
         this.director = director;
         this.runtime = runtime;
@@ -117,7 +117,8 @@ public class DVD extends Media {
         int price = res.getInt("price");
         String category = res.getString("category");
         int quantity = res.getInt("quantity");
-
+        boolean supportRush = res.getBoolean("supportRush");
+        
         // from DVD table
         String discType = res.getString("discType");
         String director = res.getString("director");
@@ -127,7 +128,7 @@ public class DVD extends Media {
         Date releasedDate = res.getDate("releasedDate");
         String filmType = res.getString("filmType");
 
-        return new DVD(id, title, category, price, quantity, type, discType, director, runtime, studio, subtitles, releasedDate, filmType);
+        return new DVD(id, title, category, price, quantity, type,supportRush, discType, director, runtime, studio, subtitles, releasedDate, filmType);
 
         } else {
             throw new SQLException();

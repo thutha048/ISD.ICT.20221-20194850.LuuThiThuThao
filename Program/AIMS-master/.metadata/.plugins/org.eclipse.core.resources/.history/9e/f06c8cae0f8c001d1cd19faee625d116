@@ -1,0 +1,33 @@
+package entity.rushOrder;
+import java.util.Calendar;
+import java.util.HashMap;
+import entity.media.*;
+import common.exception.PlaceRushOrderException;
+import entity.order.*;
+import java.util.List;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import entity.db.AIMSDB;
+
+public class RushOrder extends Order {
+	private String note;
+	private String expectedTime;
+	
+	public RushOrder(String expectedTime, String note) {
+		super();
+		this.expectedTime= expectedTime;
+		this.note = note;
+	}
+	
+	public boolean isRushed() {
+		return true;
+	}
+	
+
+}

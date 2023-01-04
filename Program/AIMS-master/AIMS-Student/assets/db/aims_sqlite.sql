@@ -73,6 +73,12 @@ CREATE TABLE "aims"."Order"(
     FOREIGN KEY("userID")
     REFERENCES "User"("id")
 );
+
+CREATE TABLE "aims"."rushOrder"(
+	"id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	"time" VARCHAR(100) NOT NULL,
+	"note" VARCHAR(100) NOT NULL,
+);
 CREATE INDEX "aims"."Order.fk_order_user_idx" ON "Order" ("userID");
 CREATE TABLE "aims"."OrderMedia"(
   "mediaID" INTEGER NOT NULL,

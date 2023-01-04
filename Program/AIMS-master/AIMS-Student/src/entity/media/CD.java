@@ -16,9 +16,9 @@ public class CD extends Media {
 
     }
 
-    public CD(int id, String title, String category, int price, int quantity, String type, String artist,
+    public CD(int id, String title, String category, int price, int quantity, String type,boolean supportRush, String artist,
             String recordLabel, String musicType, Date releasedDate) throws SQLException{
-        super(id, title, category, price, quantity, type);
+        super(id, title, category, price, quantity, type, supportRush);
         this.artist = artist;
         this.recordLabel = recordLabel;
         this.musicType = musicType;
@@ -84,7 +84,7 @@ public class CD extends Media {
             int price = res.getInt("price");
             String category = res.getString("category");
             int quantity = res.getInt("quantity");
-
+            boolean supportRush = res.getBoolean("supportRush");
             // from CD table
             String artist = res.getString("artist");
             String recordLabel = res.getString("recordLabel");
@@ -92,7 +92,7 @@ public class CD extends Media {
             Date releasedDate = res.getDate("releasedDate");
            
             return new CD(id, title, category, price, quantity, type, 
-                          artist, recordLabel, musicType, releasedDate);
+                          supportRush,artist, recordLabel, musicType, releasedDate);
             
 		} else {
 			throw new SQLException();

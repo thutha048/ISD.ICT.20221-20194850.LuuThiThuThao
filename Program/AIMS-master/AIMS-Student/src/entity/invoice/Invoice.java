@@ -1,11 +1,13 @@
 package entity.invoice;
 
 import entity.order.Order;
+import entity.rushOrder.*;
 
 public class Invoice {
 
     private Order order;
     private int amount;
+    private RushOrder rushOrder;
     
     public Invoice(){
 
@@ -15,6 +17,10 @@ public class Invoice {
         this.order = order;
     }
 
+    public Invoice(Order order, RushOrder rushOrder) {
+    	this.order= order;
+    	this.rushOrder= rushOrder;
+    }
     public Order getOrder() {
         return order;
     }

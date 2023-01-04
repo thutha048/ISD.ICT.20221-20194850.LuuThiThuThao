@@ -28,20 +28,20 @@ public class Media {
     protected String type;
     protected String imageURL;
 
-	private boolean supportRush;
+	private boolean supportRush = false;
 
     public Media() throws SQLException{
         stm = AIMSDB.getConnection().createStatement();
     }
 
-    public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
+    public Media (int id, String title, String category, int price, int quantity, String type, boolean supportRush) throws SQLException{
         this.id = id;
         this.title = title;
         this.category = category;
         this.price = price;
         this.quantity = quantity;
         this.type = type;
-
+        this.supportRush = supportRush;
         //stm = AIMSDB.getConnection().createStatement();
     }
 
@@ -64,7 +64,8 @@ public class Media {
                 .setCategory(res.getString("category"))
                 .setMediaURL(res.getString("imageUrl"))
                 .setPrice(res.getInt("price"))
-                .setType(res.getString("type"));
+                .setType(res.getString("type"))
+            	.setSupportRush(res.getBoolean("supportRush"));
         }
         return null;
     }
@@ -81,7 +82,8 @@ public class Media {
                 .setCategory(res.getString("category"))
                 .setMediaURL(res.getString("imageUrl"))
                 .setPrice(res.getInt("price"))
-                .setType(res.getString("type"));
+                .setType(res.getString("type"))
+            	.setSupportRush(res.getBoolean("supportRush"));
             medium.add(media);
         }
         return medium;
@@ -97,10 +99,18 @@ public class Media {
                           + "where id=" + id + ";");
     }
     
-    public boolean isRushSupported() {
+   /* public boolean isRushSupported() {
 		return this.supportRush;
-	}
+	}*/
     
+	public boolean isSupportRush() {
+		return supportRush;
+	}
+
+    public Media setSupportRush(boolean supportRush) {
+    	this.supportRush=supportRush;
+    	return this;
+    }
     // getter and setter 
     public int getId() {
         return this.id;
@@ -171,7 +181,11 @@ public class Media {
             ", quantity='" + quantity + "'" +
             ", type='" + type + "'" +
             ", imageURL='" + imageURL + "'" +
+            ", isSupportRush='" + supportRush + "'" +
             "}";
-    }    
+    }
+
+
+  
 
 }
